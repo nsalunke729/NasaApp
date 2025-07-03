@@ -37,5 +37,43 @@ app.get('/api/mars', async (req, res) => {
   }
 });
 
+// EPIC (Earth imagery)
+app.get('/api/epic', async (req, res) => {
+  try {
+    const { data } = await axios.get(`https://api.nasa.gov/EPIC/api/natural/images?api_key=${NASA_API_KEY}`);
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch EPIC images' });
+  }
+});
+
+// NeoWs (Near Earth Objects)
+app.get('/api/neo', async (req, res) => {
+  try {
+    const startDate = req.query.start_date || new Date().toISOString().split('T')[0];
+    const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&api_key=${NASA_API_KEY}`;
+    const { data } = await axios.get(url);
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch NEO data' });
+  }
+});
+
+// NASA Image and Video Library
+app.get('/api/images', async (req, res) => {
+  const query = req.query.q || 'moon';
+  try {
+    const url = `https://images-api.nasa.gov/search?q=${query}`;
+    const { data } = await axios.get(url);
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch NASA images' });
+  }
+});
+
+
 // Start server
 app.listen(PORT, () => console.log(`NASA API backend running on port ${PORT}`));

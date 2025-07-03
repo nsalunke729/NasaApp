@@ -23,7 +23,7 @@ node_modules/
 /frontend-NasaApp/.DS_Store
 
 # IDE settings
-.vscode/
+/frontend-NasaApp/.vscode/
 .idea/
 *.suo
 *.ntvs*
