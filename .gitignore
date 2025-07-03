@@ -1,0 +1,36 @@
+# Root
+node_modules/
+.env
+.DS_Store
+*.log
+
+# Backend
+/backend/node_modules/
+/backend/.env
+/backend/dist/
+/backend/build/
+/backend/*.log
+/backend/.cache/
+/backend/.DS_Store
+
+# Frontend
+/frontend-NasaApp/node_modules/
+/frontend-NasaApp/.env
+/frontend-NasaApp/dist/
+/frontend-NasaApp/build/
+/frontend-NasaApp/*.log
+/frontend-NasaApp/.cache/
+/frontend-NasaApp/.DS_Store
+
+# IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
